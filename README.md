@@ -1,11 +1,22 @@
-Month Quest – Purple Edition :purple_heart: :sparkles:
-A minimalistic, iOS-inspired web game that helps children learn the months of the year.
-Built with Ionic components, a unified purple color palette, and a simple Ordering mini-game logic.
+# Month Quest – 💜
 
-Features :star2:
-:iphone: Mobile-Friendly, iOS-like design (works on phones, tablets, and desktops).
-:purple_heart: Purple Color Theme for a consistent, modern look.
-:zap: Ordering Game automatically starts after the user taps “Start.”
-:chart_with_upwards_trend: Adaptive Difficulty: If a month is missed multiple times, it reappears more often.
-:battery_half: Progress Bar: See real-time quiz progress (5 questions total).
-:trophy: Results Screen: Final score display with a “Play Again” option.
+Welcome to the Month Match Adventure!  🎉 
+
+---
+This minimalistic web game helps children (and curious adults!) learn the months of the year. Built with Ionic components, a unified purple color palette, and a simple ordering mini-game logic.
+
+![screenrecording](./screenrecording.gif)
+
+## Features ✨ 
+
+- **Mobile-Friendly iOS-Like Design** – Works on phones, tablets, and desktops with a sleek interface.
+- **Purple Color Theme** – A consistent, modern look across the entire app.
+- **Ordering Game** – Automatically starts after you tap Start.
+- **Adaptive Difficulty** – If you miss a certain month repeatedly, it reappears more often.
+- **Progress Bar** – Track your progress in real time (5 questions total).
+- **Results Screen** – See your final score and tap “Play Again” if you’d like another round.
+
+---
+### Demo:
+
+Try it here: https://d3t4ldpnawgcll.cloudfront.net/
