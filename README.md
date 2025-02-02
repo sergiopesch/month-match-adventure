@@ -1,11 +1,9 @@
-# Month Quest – 💜
-
-Welcome to the Month Match Adventure!  🎉 
+# Month Match Adventure! 💜 🎉 
 
 ---
 This minimalistic web game helps children (and curious adults!) learn the months of the year. Built with Ionic components, a unified purple color palette, and a simple ordering mini-game logic.
 
-![screenrecording](./screenrecording.gif)
+![screenrecording](./ScreenRecording.gif)
 
 ## Features ✨ 
 
