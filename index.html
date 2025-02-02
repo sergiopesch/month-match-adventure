@@ -11,9 +11,46 @@
 
 <body>
     <main id="app">
-        <!-- Content will go here -->
-        <h1>Month Match Adventure</h1>
-        <p>Welcome to the month matching game!</p>
+        <!-- =============== MAIN MENU =============== -->
+        <section id="mainMenu">
+            <img class="guide-character" src="img/guide_character.png" alt="Guide Character" width="150" />
+            <h1>Month Match Adventure</h1>
+            <p>Welcome! Let's learn the months of the year in a fun way.</p>
+            <button id="startBtn">Play</button>
+        </section>
+
+        <!-- =============== MODE SELECTION =============== -->
+        <section id="modeSelection" class="hidden">
+            <h2>Select a Mode</h2>
+            <button id="modeABtn">Month Name → Number</button>
+            <button id="modeBBtn">Number → Month Name</button>
+        </section>
+
+        <!-- =============== LEVEL SELECTION =============== -->
+        <section id="levelSelection" class="hidden">
+            <h2>Select a Level</h2>
+            <button class="level-btn" data-level="1">Level 1 (3 Months)</button>
+            <button class="level-btn" data-level="2">Level 2 (6 Months)</button>
+            <button class="level-btn" data-level="3">Level 3 (12 Months)</button>
+        </section>
+
+        <!-- =============== GAME SCREEN =============== -->
+        <section id="gameScreen" class="hidden">
+            <h2 id="questionText">Question Text Goes Here</h2>
+            <div id="choicesContainer" class="choices">
+                <!-- Multiple choice buttons will be injected here via JS -->
+            </div>
+            <div id="feedbackText" class="feedback"></div>
+            <div id="scoreDisplay" class="score-display"></div>
+            <button id="nextBtn" class="hidden">Next</button>
+        </section>
+
+        <!-- =============== RESULTS SCREEN =============== -->
+        <section id="resultsScreen" class="hidden">
+            <img class="guide-character" src="img/guide_character.png" alt="Guide Character" width="150" />
+            <h2 id="resultsText">You scored X out of Y!</h2>
+            <button id="playAgainBtn">Play Again</button>
+        </section>
     </main>
 
     <!-- Link to our external JavaScript -->
