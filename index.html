@@ -11,14 +11,12 @@
     <script nomodule src="https://unpkg.com/@ionic/core@latest/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" />
 
-    <!-- Our custom CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
     <ion-app>
-        <!-- iOS-style Header / Title Bar -->
         <ion-header translucent="true">
             <ion-toolbar color="primary">
                 <ion-title>Month Match Adventure</ion-title>
@@ -26,10 +24,9 @@
         </ion-header>
 
         <ion-content class="ion-padding">
-            <!-- WELCOME SCREEN (Displayed initially) -->
+            <!-- WELCOME SCREEN -->
             <div id="welcomeScreen">
                 <div class="icon-wrapper">
-                    <!-- Minimal Ionicon for a learning vibe -->
                     <ion-icon name="school-outline" class="learning-icon"></ion-icon>
                 </div>
                 <ion-text color="light">
@@ -37,18 +34,23 @@
                 </ion-text>
                 <ion-text color="medium">
                     <p class="welcome-subtitle">
-                        Master the months of the year in a fun way!
+                        Master the months of the year in a fun, fast-paced way!
                     </p>
                 </ion-text>
-                <!-- Start Game Button -->
                 <ion-button id="startBtn" expand="block" shape="round" color="secondary">
                     Start
                 </ion-button>
             </div>
 
-            <!-- GAME SCREEN (Ordering Mode Automatically) -->
-            <div id="gameScreen" class="hidden">
-                <!-- Progress Bar to show question progress (1-5) -->
+            <!-- GAME SCREEN -->
+            <div id="gameScreen" class="hidden fade-in">
+                <!-- Game Session Timer Display (2 mins countdown) -->
+                <ion-chip id="sessionTimerChip" color="tertiary" class="timer-chip">
+                    <ion-icon name="time-outline"></ion-icon>
+                    <ion-label id="sessionTimerLabel">2:00</ion-label>
+                </ion-chip>
+
+                <!-- Progress Bar for question progress -->
                 <ion-progress-bar id="progressBar" value="0" color="tertiary"></ion-progress-bar>
 
                 <ion-card>
@@ -56,6 +58,11 @@
                         <ion-card-subtitle id="gameTitle">Month Quest</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
+                        <div class="timer-container">
+                            <!-- 5-second question timer bar -->
+                            <ion-progress-bar id="questionTimerBar" value="1" color="secondary"></ion-progress-bar>
+                        </div>
+
                         <p id="gameInstructions"></p>
                         <div class="choices" id="choiceContainer"></div>
                         <div id="feedback" class="feedback"></div>
@@ -67,7 +74,7 @@
             </div>
 
             <!-- RESULTS SCREEN -->
-            <div id="resultsScreen" class="hidden">
+            <div id="resultsScreen" class="hidden fade-in">
                 <ion-card>
                     <ion-card-header>
                         <ion-card-title>Results</ion-card-title>
@@ -83,7 +90,7 @@
         </ion-content>
     </ion-app>
 
-    <!-- Our game logic JavaScript -->
+    <!-- Main Game Logic -->
     <script src="script.js"></script>
 </body>
 

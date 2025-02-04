@@ -1,21 +1,16 @@
-/****************************************************
- * style.css
- * Unifying purple color palette in Ionic
- ****************************************************/
+/***************************************************
+ * style.css: Purple + iOS-like minimal design
+ ***************************************************/
 
-/* 1. OVERRIDE IONIC THEME COLORS */
+/* 1. THEME COLORS (Purple) */
 :root {
-    /* Primary: A mid-range purple */
     --ion-color-primary: #8e44ad;
     --ion-color-primary-rgb: 142, 68, 173;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
     --ion-color-primary-shade: #7d3a99;
-    /* Darker shade */
     --ion-color-primary-tint: #9b59b6;
-    /* Lighter tint */
 
-    /* Secondary: A lighter purple */
     --ion-color-secondary: #b275cc;
     --ion-color-secondary-rgb: 178, 117, 204;
     --ion-color-secondary-contrast: #ffffff;
@@ -23,27 +18,39 @@
     --ion-color-secondary-shade: #9f67b8;
     --ion-color-secondary-tint: #bb83d0;
 
-    /* Tertiary: An even lighter purple or a slight variation */
     --ion-color-tertiary: #c39bd3;
     --ion-color-tertiary-rgb: 195, 155, 211;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-tertiary-contrast-rgb: 255, 255, 255;
     --ion-color-tertiary-shade: #ae89ba;
     --ion-color-tertiary-tint: #c8a5d7;
-
-    /* Optionally override other color roles if needed (success, warning, etc.) */
 }
 
-/* 2. ION-CONTENT BACKGROUND */
+/* 2. BACKGROUND & BODY STYLING */
 ion-content {
     --background: linear-gradient(to bottom, #f5eef8, #ffffff);
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Trebuchet MS", sans-serif;
     color: #333;
+    transition: all 0.3s ease;
 }
 
-/* 3. HIDING ELEMENTS */
 .hidden {
     display: none !important;
+}
+
+/* 3. FADE-IN ANIMATION ON SCREEN TRANSITION */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* 4. WELCOME SCREEN */
@@ -56,8 +63,7 @@ ion-content {
 
 .learning-icon {
     font-size: 64px;
-    color: #c39bd3;
-    /* Could match tertiary or a custom shade */
+    color: var(--ion-color-tertiary);
     animation: floatUpDown 3s ease-in-out infinite;
 }
 
@@ -89,7 +95,69 @@ ion-content {
     font-size: 1rem;
 }
 
-/* 5. GAME SCREEN (Card, Choices, Feedback) */
+/* 5. GAME SCREEN */
+.timer-chip {
+    margin: 1rem auto;
+    display: block;
+    --color: var(--ion-color-tertiary-contrast);
+}
+
+/* Position the question timer bar */
+.timer-container {
+    margin-bottom: 1rem;
+}
+
+/* 6. FEEDBACK TEXT ANIMATIONS */
+.feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+    min-height: 1.5rem;
+    text-align: center;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.correct-anim {
+    animation: correctPulse 0.6s;
+}
+
+@keyframes correctPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.incorrect-anim {
+    animation: shake 0.6s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* 7. CARD & CHOICES */
 ion-card {
     border-radius: 16px;
     margin-top: 2rem;
@@ -113,23 +181,7 @@ ion-card-subtitle {
     margin: 0.4rem;
 }
 
-.feedback {
-    margin-top: 1rem;
-    font-weight: bold;
-    min-height: 1.5rem;
-    text-align: center;
-    color: #666;
-}
-
-/* 6. PROGRESS BAR */
-ion-progress-bar {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    /* It's color is set to "tertiary" in index.html 
-     which uses the color variables above */
-}
-
-/* 7. RESULTS SCREEN */
+/* 8. RESULTS SCREEN */
 #resultsText {
     margin: 1rem 0;
     text-align: center;
@@ -137,7 +189,7 @@ ion-progress-bar {
     color: #333;
 }
 
-/* 8. RESPONSIVE */
+/* 9. RESPONSIVE */
 @media (max-width: 600px) {
     .learning-icon {
         font-size: 48px;
