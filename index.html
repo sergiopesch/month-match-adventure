@@ -3,95 +3,101 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Month Quest – Purple Theme</title>
+    <title>Month Quest – 30s iOS Style</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Ionic Core via CDN -->
-    <script type="module" src="https://unpkg.com/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="https://unpkg.com/@ionic/core@latest/dist/ionic/ionic.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" />
+    <!-- Framework7 Core + Icons (iOS Theme) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@7.0.8/framework7-bundle.min.css" />
 
-    <!-- Custom CSS -->
+    <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <ion-app>
-        <ion-header translucent="true">
-            <ion-toolbar color="primary">
-                <ion-title>Month Match Adventure</ion-title>
-            </ion-toolbar>
-        </ion-header>
-
-        <ion-content class="ion-padding">
+    <!-- Framework7 root container (important for correct iOS styling) -->
+    <div id="app">
+        <div class="view view-main ios-edges">
             <!-- WELCOME SCREEN -->
-            <div id="welcomeScreen">
-                <div class="icon-wrapper">
-                    <ion-icon name="school-outline" class="learning-icon"></ion-icon>
+            <div id="welcomeScreen" class="page page-current fade-in">
+                <div class="page-content page-content-welcome">
+                    <div class="icon-wrapper">
+                        <!-- Use a valid F7 icon name -->
+                        <i class="f7-icons learning-icon">book_fill</i>
+                    </div>
+                    <div class="block block-strong text-align-center">
+                        <h2 class="welcome-title">Welcome!</h2>
+                        <p class="welcome-subtitle">
+                            Master the months in a fast-paced, 30-second iOS-style challenge!
+                        </p>
+                        <button id="startBtn" class="col button button-fill button-round color-purple">
+                            Start
+                        </button>
+                    </div>
                 </div>
-                <ion-text color="light">
-                    <h2 class="welcome-title">Welcome</h2>
-                </ion-text>
-                <ion-text color="medium">
-                    <p class="welcome-subtitle">
-                        Master the months of the year in a fun, fast-paced way!
-                    </p>
-                </ion-text>
-                <ion-button id="startBtn" expand="block" shape="round" color="secondary">
-                    Start
-                </ion-button>
             </div>
 
             <!-- GAME SCREEN -->
-            <div id="gameScreen" class="hidden fade-in">
-                <!-- Game Session Timer Display (2 mins countdown) -->
-                <ion-chip id="sessionTimerChip" color="tertiary" class="timer-chip">
-                    <ion-icon name="time-outline"></ion-icon>
-                    <ion-label id="sessionTimerLabel">2:00</ion-label>
-                </ion-chip>
+            <div id="gameScreen" class="page hidden fade-in">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="title">30s Quiz</div>
+                    </div>
+                </div>
+                <div class="page-content page-content-game">
+                    <!-- The big 30-second timer -->
+                    <div id="timerDisplay" class="timer-display"></div>
 
-                <!-- Progress Bar for question progress -->
-                <ion-progress-bar id="progressBar" value="0" color="tertiary"></ion-progress-bar>
-
-                <ion-card>
-                    <ion-card-header>
-                        <ion-card-subtitle id="gameTitle">Month Quest</ion-card-subtitle>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <div class="timer-container">
-                            <!-- 5-second question timer bar -->
-                            <ion-progress-bar id="questionTimerBar" value="1" color="secondary"></ion-progress-bar>
+                    <!-- Card container -->
+                    <div class="card card-outline">
+                        <div class="card-content card-content-padding">
+                            <h2 id="gameInstructions" class="question-text"></h2>
+                            <div id="choiceContainer" class="choices row"></div>
+                            <div id="feedback" class="feedback"></div>
+                            <!-- Next button -->
+                            <button id="nextBtn" class="col button button-fill button-round color-primary hidden">
+                                Next
+                            </button>
                         </div>
-
-                        <p id="gameInstructions"></p>
-                        <div class="choices" id="choiceContainer"></div>
-                        <div id="feedback" class="feedback"></div>
-                        <ion-button id="nextBtn" class="hidden" expand="block" color="primary" shape="round">
-                            Next
-                        </ion-button>
-                    </ion-card-content>
-                </ion-card>
+                    </div>
+                </div>
             </div>
 
             <!-- RESULTS SCREEN -->
-            <div id="resultsScreen" class="hidden fade-in">
-                <ion-card>
-                    <ion-card-header>
-                        <ion-card-title>Results</ion-card-title>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <p id="resultsText"></p>
-                        <ion-button id="playAgainBtn" expand="block" color="secondary" shape="round">
-                            Play Again
-                        </ion-button>
-                    </ion-card-content>
-                </ion-card>
+            <div id="resultsScreen" class="page hidden fade-in">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="title">Results</div>
+                    </div>
+                </div>
+                <div class="page-content page-content-results">
+                    <div class="card card-outline">
+                        <div class="card-header">Your Score</div>
+                        <div class="card-content card-content-padding">
+                            <p id="resultsText" class="results-text"></p>
+                            <button id="playAgainBtn" class="col button button-fill button-round color-purple">
+                                Play Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </ion-content>
-    </ion-app>
+        </div>
+    </div>
 
-    <!-- Main Game Logic -->
+    <!-- Framework7 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/framework7@7.0.8/framework7-bundle.min.js"></script>
+
+    <!-- Our Game Logic -->
     <script src="script.js"></script>
+
+    <!-- Initialize Framework7 (important for navbars, etc.) -->
+    <script>
+        var app = new Framework7({
+            el: '#app',
+            name: 'MonthQuestApp',
+            theme: 'ios'
+        });
+    </script>
 </body>
 
 </html>

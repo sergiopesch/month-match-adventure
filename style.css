@@ -1,46 +1,25 @@
 /***************************************************
- * style.css: Purple + iOS-like minimal design
+ * style.css: iOS-like minimal design with Framework7
  ***************************************************/
 
-/* 1. THEME COLORS (Purple) */
+/* 1. COLOR SCHEME: Purple Variation */
 :root {
-    --ion-color-primary: #8e44ad;
-    --ion-color-primary-rgb: 142, 68, 173;
-    --ion-color-primary-contrast: #ffffff;
-    --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #7d3a99;
-    --ion-color-primary-tint: #9b59b6;
-
-    --ion-color-secondary: #b275cc;
-    --ion-color-secondary-rgb: 178, 117, 204;
-    --ion-color-secondary-contrast: #ffffff;
-    --ion-color-secondary-contrast-rgb: 255, 255, 255;
-    --ion-color-secondary-shade: #9f67b8;
-    --ion-color-secondary-tint: #bb83d0;
-
-    --ion-color-tertiary: #c39bd3;
-    --ion-color-tertiary-rgb: 195, 155, 211;
-    --ion-color-tertiary-contrast: #ffffff;
-    --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-    --ion-color-tertiary-shade: #ae89ba;
-    --ion-color-tertiary-tint: #c8a5d7;
+    --f7-color-purple: #8e44ad;
+    /* Our main purple color */
 }
 
-/* 2. BACKGROUND & BODY STYLING */
-ion-content {
-    --background: linear-gradient(to bottom, #f5eef8, #ffffff);
+/* 2. PAGE & FADE */
+body,
+html {
+    margin: 0;
+    padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Trebuchet MS", sans-serif;
+    background-color: #ffffff;
     color: #333;
-    transition: all 0.3s ease;
 }
 
-.hidden {
-    display: none !important;
-}
-
-/* 3. FADE-IN ANIMATION ON SCREEN TRANSITION */
 .fade-in {
-    animation: fadeIn 0.5s ease forwards;
+    animation: fadeIn 0.4s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -53,17 +32,27 @@ ion-content {
     }
 }
 
-/* 4. WELCOME SCREEN */
-.icon-wrapper {
+.hidden {
+    display: none !important;
+}
+
+/* 3. WELCOME SCREEN STYLES */
+.page-content-welcome {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 3rem;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f5eef8, #ffffff);
+}
+
+.icon-wrapper {
     margin-bottom: 1rem;
 }
 
 .learning-icon {
     font-size: 64px;
-    color: var(--ion-color-tertiary);
+    color: var(--f7-color-purple);
     animation: floatUpDown 3s ease-in-out infinite;
 }
 
@@ -82,32 +71,59 @@ ion-content {
 }
 
 .welcome-title {
-    text-align: center;
     font-size: 1.8rem;
-    margin-top: 1rem;
+    margin-top: 0.2rem;
     margin-bottom: 0.5rem;
 }
 
 .welcome-subtitle {
-    text-align: center;
-    margin-bottom: 2rem;
     color: #666;
+    text-align: center;
     font-size: 1rem;
 }
 
-/* 5. GAME SCREEN */
-.timer-chip {
-    margin: 1rem auto;
-    display: block;
-    --color: var(--ion-color-tertiary-contrast);
+/* 4. GAME SCREEN */
+.page-content-game {
+    padding: 1rem;
+    background: #fefefe;
+    min-height: 100vh;
 }
 
-/* Position the question timer bar */
-.timer-container {
+.timer-display {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--f7-color-purple);
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: pulseTimer 1s infinite alternate ease-in-out;
+}
+
+@keyframes pulseTimer {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.question-text {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
-/* 6. FEEDBACK TEXT ANIMATIONS */
+.choices {
+    justify-content: center;
+}
+
+.choices button {
+    margin: 0.4rem;
+}
+
+/* 5. FEEDBACK TEXT */
 .feedback {
     margin-top: 1rem;
     font-weight: bold;
@@ -127,7 +143,7 @@ ion-content {
     }
 
     50% {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 
     100% {
@@ -157,45 +173,36 @@ ion-content {
     }
 }
 
-/* 7. CARD & CHOICES */
-ion-card {
-    border-radius: 16px;
-    margin-top: 2rem;
-    --ion-color-base: #ffffff;
-}
-
-ion-card-subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.choices {
+/* 6. RESULTS SCREEN */
+.page-content-results {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    margin: 1rem 0;
+    align-items: center;
+    min-height: 100vh;
+    background: #fafafa;
 }
 
-.choices ion-button {
-    margin: 0.4rem;
-}
-
-/* 8. RESULTS SCREEN */
-#resultsText {
-    margin: 1rem 0;
-    text-align: center;
+.results-text {
+    font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
     color: #333;
 }
 
-/* 9. RESPONSIVE */
+/* 7. FRAMEWORK7 CUSTOM PURPLE */
+.color-purple {
+    background-color: var(--f7-color-purple) !important;
+    color: #fff !important;
+}
+
+/* 8. RESPONSIVE */
 @media (max-width: 600px) {
     .learning-icon {
         font-size: 48px;
     }
 
-    .welcome-title {
-        font-size: 1.4rem;
+    .timer-display {
+        font-size: 1.6rem;
     }
 }
